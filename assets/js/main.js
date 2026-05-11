@@ -26,19 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
             
-            // Staggered reveal for Bento Grid
-            gsap.from(".bento-item", {
-                scrollTrigger: {
-                    trigger: ".bento-grid",
-                    start: "top 85%",
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power2.out"
-            });
-
             // Stats Counter
             const statsSection = document.querySelector('.stats-section');
             if (statsSection) {

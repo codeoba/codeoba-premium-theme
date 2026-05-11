@@ -37,9 +37,9 @@ function codeoba_scripts() {
     wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css' );
     wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.0.0', true );
 
-    // Enqueue Main Assets (v1.2.2)
-    wp_enqueue_style( 'codeoba-main-style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2.0' );
-    wp_enqueue_script( 'codeoba-main-js', get_template_directory_uri() . '/assets/js/main.js', array('gsap'), '1.2.0', true );
+    // Enqueue Main Assets (v1.2.5)
+    wp_enqueue_style( 'codeoba-main-style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2.5' );
+    wp_enqueue_script( 'codeoba-main-js', get_template_directory_uri() . '/assets/js/main.js', array('gsap'), '1.2.5', true );
 }
 add_action( 'wp_enqueue_scripts', 'codeoba_scripts' );
 
