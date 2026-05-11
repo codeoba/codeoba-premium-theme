@@ -4,9 +4,20 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. Preloader
+    // 1. Preloader & AOS Init
     window.addEventListener('load', function() {
         const preloader = document.getElementById('preloader');
+        
+        // Fail-safe AOS Init
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100,
+                delay: 200
+            });
+        }
+
         if (preloader) {
             gsap.to(preloader, {
                 opacity: 0,
@@ -19,6 +30,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    // Fail-safe: Force hide preloader if it's still there after 5s
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader && preloader.style.display !== 'none') {
+            preloader.style.display = 'none';
+            if (typeof AOS !== 'undefined') AOS.init();
+        }
+    }, 5000);
 
     // 2. Vanilla-Tilt Initialization
     if (typeof VanillaTilt !== 'undefined') {
