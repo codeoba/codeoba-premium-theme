@@ -18,16 +18,24 @@ add_action( 'after_setup_theme', 'codeoba_setup' );
  */
 function codeoba_scripts() {
     wp_enqueue_style( 'codeoba-style', get_stylesheet_uri(), array(), '1.0.0' );
-    wp_enqueue_style( 'codeoba-main', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0.0' );
     
-    // External Libraries
-    wp_enqueue_style( 'aos', 'https://unpkg.com/aos@next/dist/aos.css' );
+    // Enqueue FontAwesome
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' );
+    
+    // Enqueue AOS
+    wp_enqueue_style( 'aos-css', 'https://unpkg.com/aos@2.3.1/dist/aos.css' );
+    wp_enqueue_script( 'aos-js', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), '2.3.1', true );
 
-    wp_enqueue_script( 'aos-js', 'https://unpkg.com/aos@next/dist/aos.js', array(), null, true );
-    wp_enqueue_script( 'particles-js', 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js', array(), null, true );
-    wp_enqueue_script( 'typewriter-js', 'https://unpkg.com/typewriter-effect@latest/dist/core.js', array(), null, true );
-    wp_enqueue_script( 'codeoba-main-js', get_template_directory_uri() . '/assets/js/main.js', array('aos-js', 'particles-js', 'typewriter-js'), '1.0.0', true );
+    // Enqueue GSAP (For Smooth Animations)
+    wp_enqueue_script( 'gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', array(), '3.12.2', true );
+    wp_enqueue_script( 'gsap-scroll-trigger', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js', array('gsap'), '3.12.2', true );
+
+    // Enqueue Vanilla-Tilt (For 3D Interaction)
+    wp_enqueue_script( 'vanilla-tilt', 'https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js', array(), '1.8.1', true );
+
+    // Enqueue Main Assets (v1.2.0)
+    wp_enqueue_style( 'codeoba-main-style', get_template_directory_uri() . '/assets/css/main.css', array(), '1.2.0' );
+    wp_enqueue_script( 'codeoba-main-js', get_template_directory_uri() . '/assets/js/main.js', array('gsap'), '1.2.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'codeoba_scripts' );
 
